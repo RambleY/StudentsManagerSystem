@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	
+	
+	<package name="users" extends="struts-default">
+		<action name="loginAction" class="action.UsersAction" method="login">
+			<result name="login_success">Users_login_success.jsp</result>
+			<result name="login_failure">Users_login.jsp</result>
+		</action>
+		
+		<action name="registeAction" class="action.UsersAction" method="registe">
+			<result name="success">Users_login.jsp</result>
+		</action>
+	</package>
+	
+	<package name="students" extends="json-default,struts-default">
+		<action name="queryAction" class="action.StudentsAction" method="query">
+			<result type="json">
+			<!-- dataMap是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		
+		<action name="deleteAction" class="action.StudentsAction" method="delete">
+			<result type="json"></result>
+		</action>
+		
+		<action name="addAction" class="action.StudentsAction" method="add">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+	</package>
+</struts>    
